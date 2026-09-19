@@ -15,4 +15,17 @@ def merge(left, right):
         result.extend(right[j:])
     return result
 
-print(merge([2, 5], [1, 3, 4]))
+def merge_sort(lst):
+    mid = len(lst) // 2
+    left_half = lst[:mid]
+    right_half = lst[mid:]
+    if len(lst) == 0:
+        return []
+    elif len(lst) == 1:
+        return [lst[0]]
+    else:
+        sorted_left = merge_sort(left_half)
+        sorted_right = merge_sort(right_half)
+    return merge(sorted_left, sorted_right)
+
+print(merge_sort([5, 2, 1, 4, 3]))
